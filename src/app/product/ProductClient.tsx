@@ -114,6 +114,13 @@ const ProductClient: React.FC<ProductClientProps> = ({
     return Array.from(set).sort();
   }, [rawProducts]);
 
+  const searchSuggestions = React.useMemo(() => {
+    const titles = rawProducts
+      .map((p) => p.title?.trim())
+      .filter(Boolean) as string[];
+    return [...new Set([...titles, ...categories, ...brands])];
+  }, [rawProducts, categories, brands]);
+
   const filteredBeforeStock = React.useMemo(
     () =>
       filterAndSortProducts(rawProducts, {
@@ -221,6 +228,7 @@ const ProductClient: React.FC<ProductClientProps> = ({
           inStockCount={inStockCount}
           totalBeforeStockFilter={filteredBeforeStock.length}
           search={search}
+          searchSuggestions={searchSuggestions}
           onSearchChange={(value) => {
             setSearch(value);
             setPage(1);
