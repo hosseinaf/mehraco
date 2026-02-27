@@ -10,8 +10,17 @@ import { Pagination } from "@/app/product/components/Pagination";
 import { ProductsToolbar } from "@/app/product/components/ProductsToolbar";
 import { ProductModal } from "@/app/product/components/ProductModal";
 import { useGetProducts } from "@/queries/product";
+import { GetProductsResponse } from "@/queries/product/type";
 
-const ProductClient: React.FC = () => {
+interface ProductClientProps {
+  initialData?: GetProductsResponse | null;
+  initialError?: string | null;
+}
+
+const ProductClient: React.FC<ProductClientProps> = ({
+  initialData,
+  initialError,
+}) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -91,6 +100,9 @@ const ProductClient: React.FC = () => {
     brand,
     price,
     inStock,
+    options: {
+      initialData,
+    },
   });
 
   const products: GridProduct[] =
