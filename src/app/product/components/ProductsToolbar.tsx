@@ -82,7 +82,9 @@ export function ProductsToolbar({
       <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-2">
         {/* sort */}
         <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 col-span-2 sm:col-auto">
-          <span className="text-xs sm:text-sm text-neutral-600 hidden sm:inline">Sort by</span>
+          <span className="text-xs sm:text-sm text-neutral-600 hidden sm:inline">
+            Sort by
+          </span>
           <select
             value={sort}
             onChange={(e) => onSortChange?.(e.target.value)}
