@@ -114,7 +114,7 @@ export function ProductsToolbar({
           )}
         </div>
         <div ref={searchContainerRef} className="relative w-full">
-          <label className="relative block w-full bg-white dark:bg-neutral-800">
+          <label className="relative block w-full rounded-full overflow-hidden bg-white dark:bg-neutral-800">
             <span className="sr-only">Search products</span>
 
             {/* Search Icon */}
@@ -140,7 +140,7 @@ export function ProductsToolbar({
               onChange={(e) => onSearchChange?.(e.target.value)}
               onFocus={() => setIsSuggestionsOpen(true)}
               onBlur={() => setIsSuggestionsOpen(false)}
-              className="w-full rounded-full border border-neutral-200 bg-white pl-10 pr-4 py-2 text-sm text-neutral-900 outline-none transition focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500 dark:focus:ring-neutral-700"
+              className="w-full appearance-none rounded-full bg-white pl-10 pr-4 py-2 text-sm text-neutral-900 outline-none ring-1 ring-neutral-200 transition focus:ring-2 focus:ring-neutral-300 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:ring-neutral-600 dark:focus:ring-neutral-500 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
               autoComplete="off"
               aria-expanded={isSuggestionsOpen && filteredSuggestions.length > 0}
               aria-controls="search-suggestions-list"
