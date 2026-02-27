@@ -93,6 +93,7 @@ export function ProductsToolbar({
             <option value="newest">Newest</option>
             <option value="price-asc">Price: Low to high</option>
             <option value="price-desc">Price: High to low</option>
+            <option value="discount-desc">Biggest Discount</option>
           </select>
         </label>
 
