@@ -241,8 +241,8 @@ export function ProductsToolbar({
           </select>
         </label>
 
-        {/* in stock toggle - rightmost */}
-        <div className="flex items-center gap-2 col-span-2 sm:col-auto sm:ml-auto mt-2 sm:mt-0">
+        {/* in stock toggle - rightmost on sm+, beside Price on mobile */}
+        <div className="flex items-center gap-2 ml-2 sm:ml-auto">
           <span className="text-xs sm:text-sm text-neutral-600">In stock only</span>
           <button
             type="button"
