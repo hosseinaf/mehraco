@@ -98,29 +98,29 @@ export function ProductsToolbar({
       <div className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-col gap-1">
-            <span className="text-sm tracking-tight">{totalLabel} Products</span>
+            <span className="text-sm tracking-tight text-neutral-900 dark:text-neutral-100">{totalLabel} Products</span>
             {stockLabel != null && (
-              <span className="text-xs text-neutral-500">{stockLabel}</span>
+              <span className="text-xs text-neutral-500 dark:text-neutral-400">{stockLabel}</span>
             )}
           </div>
           {hasActiveFilters && onClearFilters && (
             <button
               type="button"
               onClick={onClearFilters}
-              className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2"
+              className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white dark:focus:ring-neutral-600 dark:focus:ring-offset-neutral-900"
             >
               Clear all filters
             </button>
           )}
         </div>
         <div ref={searchContainerRef} className="relative w-full">
-          <label className="relative block w-full bg-white">
+          <label className="relative block w-full bg-white dark:bg-neutral-800">
             <span className="sr-only">Search products</span>
 
             {/* Search Icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400"
+              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -140,7 +140,7 @@ export function ProductsToolbar({
               onChange={(e) => onSearchChange?.(e.target.value)}
               onFocus={() => setIsSuggestionsOpen(true)}
               onBlur={() => setIsSuggestionsOpen(false)}
-              className="w-full rounded-full border border-neutral-200 bg-white pl-10 pr-4 py-2 text-sm text-neutral-900 outline-none transition focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+              className="w-full rounded-full border border-neutral-200 bg-white pl-10 pr-4 py-2 text-sm text-neutral-900 outline-none transition focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500 dark:focus:ring-neutral-700"
               autoComplete="off"
               aria-expanded={isSuggestionsOpen && filteredSuggestions.length > 0}
               aria-controls="search-suggestions-list"
@@ -152,13 +152,13 @@ export function ProductsToolbar({
             <ul
               id="search-suggestions-list"
               role="listbox"
-              className="absolute left-0 right-0 top-full z-20 mt-1 max-h-56 overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-lg"
+              className="absolute left-0 right-0 top-full z-20 mt-1 max-h-56 overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
             >
               {filteredSuggestions.map((suggestion) => (
                 <li
                   key={suggestion}
                   role="option"
-                  className="cursor-pointer px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none"
+                  className="cursor-pointer px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                   onMouseDown={(e) => {
                     e.preventDefault();
                     onSearchChange?.(suggestion);
@@ -177,13 +177,13 @@ export function ProductsToolbar({
       <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-2">
         {/* sort */}
         <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 col-span-2 sm:col-auto">
-          <span className="text-xs sm:text-sm text-neutral-600 hidden sm:inline">
+          <span className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 hidden sm:inline">
             Sort by
           </span>
           <select
             value={sort}
             onChange={(e) => onSortChange?.(e.target.value)}
-            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:focus:border-neutral-500 dark:focus:ring-neutral-700"
           >
             <option value="newest">Newest</option>
             <option value="price-asc">Price: Low to high</option>
@@ -194,11 +194,11 @@ export function ProductsToolbar({
 
         {/* category */}
         <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
-          <span className="text-xs sm:text-sm text-neutral-600">Category</span>
+          <span className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">Category</span>
           <select
             value={category}
             onChange={(e) => onCategoryChange?.(e.target.value)}
-            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:focus:border-neutral-500 dark:focus:ring-neutral-700"
           >
             <option value="">All</option>
             {categories.map((c) => (
@@ -211,11 +211,11 @@ export function ProductsToolbar({
 
         {/* brands */}
         <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
-          <span className="text-xs sm:text-sm text-neutral-600">Brands</span>
+          <span className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">Brands</span>
           <select
             value={brand}
             onChange={(e) => onBrandChange?.(e.target.value)}
-            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:focus:border-neutral-500 dark:focus:ring-neutral-700"
           >
             <option value="">All</option>
             {brands.map((b) => (
@@ -228,11 +228,11 @@ export function ProductsToolbar({
 
         {/* price */}
         <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
-          <span className="text-xs sm:text-sm text-neutral-600">Price</span>
+          <span className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">Price</span>
           <select
             value={price}
             onChange={(e) => onPriceChange?.(e.target.value)}
-            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700 dark:focus:border-neutral-500 dark:focus:ring-neutral-700"
           >
             <option value="">Any</option>
             <option value="0-50">$0 - $50</option>
@@ -243,19 +243,19 @@ export function ProductsToolbar({
 
         {/* in stock toggle - rightmost on sm+, beside Price on mobile */}
         <div className="flex items-center gap-2 ml-2 sm:ml-auto">
-          <span className="text-xs sm:text-sm text-neutral-600">In stock only</span>
+          <span className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">In stock only</span>
           <button
             type="button"
             role="switch"
             aria-checked={inStock}
             aria-label={inStock ? "Show only in-stock products" : "Show all products"}
             onClick={() => onInStockChange?.(!inStock)}
-            className={`relative inline-block h-5 w-10 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2 ${
-              inStock ? "bg-black" : "bg-neutral-200"
+            className={`relative inline-block h-5 w-10 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 ${
+              inStock ? "bg-black dark:bg-neutral-100" : "bg-neutral-200 dark:bg-neutral-600"
             }`}
           >
             <span
-              className={`absolute left-0 top-0 h-5 w-5 rounded-full bg-white shadow transform transition-transform duration-200 ${
+              className={`absolute left-0 top-0 h-5 w-5 rounded-full bg-white shadow transform transition-transform duration-200 dark:bg-neutral-800 ${
                 inStock ? "translate-x-5" : "translate-x-0"
               }`}
             />

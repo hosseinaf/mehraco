@@ -1,12 +1,12 @@
 export function EmptyProductState() {
   return (
     <section
-      className="flex flex-col items-center justify-center rounded-2xl border border-neutral-200 bg-white px-6 py-16 text-center shadow-sm"
+      className="flex flex-col items-center justify-center rounded-2xl border border-neutral-200 bg-white px-6 py-16 text-center shadow-sm dark:border-neutral-700 dark:bg-neutral-800"
       aria-label="No products found"
     >
-      <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-neutral-100">
+      <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-700">
         <svg
-          className="h-10 w-10 text-neutral-400"
+          className="h-10 w-10 text-neutral-400 dark:text-neutral-500"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -20,10 +20,10 @@ export function EmptyProductState() {
           />
         </svg>
       </div>
-      <h2 className="text-lg font-semibold text-neutral-900">
+      <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
         No products found
       </h2>
-      <p className="mt-2 max-w-sm text-sm text-neutral-500">
+      <p className="mt-2 max-w-sm text-sm text-neutral-500 dark:text-neutral-400">
         Try adjusting your filters or search to find what you&apos;re looking for.
       </p>
     </section>

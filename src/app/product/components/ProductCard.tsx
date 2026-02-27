@@ -26,9 +26,9 @@ export const ProductCard: FC<ProductCardProps> = ({
   oldPrice,
 }) => {
   return (
-    <article className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+    <article className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer dark:bg-neutral-800 dark:ring-neutral-700">
       <div className="flex flex-1 items-center justify-center">
-        <div className="aspect-3/5 w-full max-w-64 sm:max-w-35 rounded-2xl bg-neutral-100 overflow-hidden transition-transform duration-300 hover:scale-105">
+        <div className="aspect-3/5 w-full max-w-64 sm:max-w-35 rounded-2xl bg-neutral-100 overflow-hidden transition-transform duration-300 hover:scale-105 dark:bg-neutral-700">
           {imageUrl ? (
             <img
               src={imageUrl}
@@ -37,17 +37,17 @@ export const ProductCard: FC<ProductCardProps> = ({
             />
           ) : (
             <div className="flex h-full flex-col items-center justify-between px-4 py-3">
-              <div className="mt-1 h-1 w-10 rounded-full bg-neutral-300" />
-              <div className="mb-1 h-1.5 w-12 rounded-full bg-neutral-300" />
+              <div className="mt-1 h-1 w-10 rounded-full bg-neutral-300 dark:bg-neutral-600" />
+              <div className="mb-1 h-1.5 w-12 rounded-full bg-neutral-300 dark:bg-neutral-600" />
             </div>
           )}
         </div>
       </div>
 
       <div className="space-y-1">
-        <h3 className="text-sm font-semibold text-neutral-900">{name}</h3>
+        <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">{name}</h3>
         {(storage || color) && (
-          <p className="text-xs text-neutral-500">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">
             {storage}
             {storage && color ? " · " : ""}
             {color}
@@ -58,12 +58,12 @@ export const ProductCard: FC<ProductCardProps> = ({
       {(discount || oldPrice) && (
         <div className="flex items-center gap-2">
           {discount && (
-            <span className="rounded-full bg-neutral-900 px-2 py-0.5 text-[10px] font-medium text-white">
+            <span className="rounded-full bg-neutral-900 px-2 py-0.5 text-[10px] font-medium text-white dark:bg-neutral-100 dark:text-neutral-900">
               {discount}
             </span>
           )}
           {oldPrice && (
-            <span className="text-xs text-neutral-500 line-through">
+            <span className="text-xs text-neutral-500 line-through dark:text-neutral-400">
               {oldPrice}
             </span>
           )}
@@ -71,11 +71,11 @@ export const ProductCard: FC<ProductCardProps> = ({
       )}
 
       <div className="mt-1">
-        <p className="text-lg font-semibold text-neutral-900">{price}</p>
+        <p className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{price}</p>
       </div>
 
       {(camera || shipping) && (
-        <div className="mt-1 flex items-center justify-between text-xs text-neutral-500">
+        <div className="mt-1 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
           <p>{camera}</p>
           <p>{shipping}</p>
         </div>

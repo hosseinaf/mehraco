@@ -34,22 +34,22 @@ type ProductGridProps = {
 
 function SkeletonProductCard() {
   return (
-    <article className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-100 animate-pulse">
+    <article className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-100 animate-pulse dark:bg-neutral-800 dark:ring-neutral-700">
       <div className="flex flex-1 items-center justify-center">
-        <div className="aspect-3/5 w-full max-w-35 rounded-2xl bg-neutral-100 shadow-inner" />
+        <div className="aspect-3/5 w-full max-w-35 rounded-2xl bg-neutral-100 shadow-inner dark:bg-neutral-700" />
       </div>
 
       <div className="space-y-1">
-        <div className="h-4 w-3/4 rounded bg-neutral-200" />
-        <div className="h-3 w-1/2 rounded bg-neutral-200" />
+        <div className="h-4 w-3/4 rounded bg-neutral-200 dark:bg-neutral-600" />
+        <div className="h-3 w-1/2 rounded bg-neutral-200 dark:bg-neutral-600" />
       </div>
 
       <div className="mt-1 flex items-center justify-between">
         <div className="space-y-0.5 text-xs text-neutral-500">
-          <div className="h-3 w-24 rounded bg-neutral-200" />
-          <div className="h-3 w-20 rounded bg-neutral-200" />
+          <div className="h-3 w-24 rounded bg-neutral-200 dark:bg-neutral-600" />
+          <div className="h-3 w-20 rounded bg-neutral-200 dark:bg-neutral-600" />
         </div>
-        <div className="h-5 w-16 rounded bg-neutral-200" />
+        <div className="h-5 w-16 rounded bg-neutral-200 dark:bg-neutral-600" />
       </div>
     </article>
   );

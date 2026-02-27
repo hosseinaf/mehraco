@@ -221,7 +221,7 @@ const ProductClient: React.FC<ProductClientProps> = ({
   };
 
   return (
-    <main className="min-h-screen bg-neutral-50 px-4 py-8 text-neutral-900">
+    <main className="min-h-screen bg-neutral-50 px-4 py-8 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <div className="mx-auto flex max-w-6xl flex-col gap-8">
         <ProductsToolbar
           total={total}
@@ -367,7 +367,7 @@ const ProductClient: React.FC<ProductClientProps> = ({
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-neutral-900 text-white p-4 rounded-full shadow-lg hover:bg-neutral-800 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-neutral-600 focus:ring-offset-2 z-40"
+          className="fixed bottom-8 right-8 bg-neutral-900 text-white p-4 rounded-full shadow-lg hover:bg-neutral-800 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-neutral-600 focus:ring-offset-2 z-40 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200 dark:focus:ring-neutral-400 dark:focus:ring-offset-neutral-900"
           aria-label="Scroll to top"
         >
           <svg

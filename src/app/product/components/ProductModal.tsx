@@ -26,10 +26,10 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center">
-      <div className="relative mx-0 w-full max-h-screen overflow-y-auto bg-white rounded-t-2xl sm:rounded-2xl p-4 sm:p-6 shadow-lg sm:max-w-4xl sm:mx-4">
+      <div className="relative mx-0 w-full max-h-screen overflow-y-auto bg-white rounded-t-2xl sm:rounded-2xl p-4 sm:p-6 shadow-lg sm:max-w-4xl sm:mx-4 dark:bg-neutral-900">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-neutral-500 hover:text-neutral-900"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
           aria-label="Close"
         >
           <svg
@@ -52,15 +52,15 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
           {/* left: main image and thumbnails */}
           <div className="flex-1 flex flex-col gap-4 sm:gap-6">
             {/* main image */}
-            <div className="aspect-3/4 w-full rounded-3xl bg-neutral-100 overflow-hidden relative flex items-center justify-center">
+            <div className="aspect-3/4 w-full rounded-3xl bg-neutral-100 overflow-hidden relative flex items-center justify-center dark:bg-neutral-800">
               {currentIdx > 0 && (
                 <button
                   onClick={() => setCurrentIdx((i) => i - 1)}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 hover:bg-neutral-100 transition-colors shadow-md"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 hover:bg-neutral-100 transition-colors shadow-md dark:bg-neutral-700 dark:hover:bg-neutral-600"
                   aria-label="Previous image"
                 >
                   <svg
-                    className="w-6 h-6 text-neutral-900"
+                    className="w-6 h-6 text-neutral-900 dark:text-neutral-100"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -77,11 +77,11 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
               {currentIdx < imgs.length - 1 && (
                 <button
                   onClick={() => setCurrentIdx((i) => i + 1)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 hover:bg-neutral-100 transition-colors shadow-md"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 hover:bg-neutral-100 transition-colors shadow-md dark:bg-neutral-700 dark:hover:bg-neutral-600"
                   aria-label="Next image"
                 >
                   <svg
-                    className="w-6 h-6 text-neutral-900"
+                    className="w-6 h-6 text-neutral-900 dark:text-neutral-100"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -111,14 +111,14 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                     onClick={() => setCurrentIdx(idx)}
                     className={`h-20 w-20 flex-none rounded-2xl overflow-hidden focus:outline-none transition-all ${
                       idx === currentIdx
-                        ? "ring-1 ring-neutral-900"
-                        : "border border-neutral-200 hover:border-neutral-300"
+                        ? "ring-1 ring-neutral-900 dark:ring-neutral-100"
+                        : "border border-neutral-200 hover:border-neutral-300 dark:border-neutral-600 dark:hover:border-neutral-500"
                     }`}
                   >
                     <img
                       src={img}
                       alt={`${product.name} ${idx + 1}`}
-                      className="h-full w-full object-contain bg-neutral-50 transition-transform duration-300 hover:scale-110"
+                      className="h-full w-full object-contain bg-neutral-50 transition-transform duration-300 hover:scale-110 dark:bg-neutral-800"
                     />
                   </button>
                 ))}
@@ -129,7 +129,7 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
           {/* right: details */}
           <div className="flex-1 flex flex-col gap-4 sm:gap-5">
             {product.category && (
-              <span className="text-xs font-medium text-neutral-500 uppercase tracking-wide">
+              <span className="text-xs font-medium text-neutral-500 uppercase tracking-wide dark:text-neutral-400">
                 {product.category}
               </span>
             )}
@@ -142,8 +142,8 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
               <span
                 className={`inline-block rounded-full px-3 py-1 text-xs font-semibold w-fit ${
                   product.inStock
-                    ? "bg-green-100 text-green-700"
-                    : "bg-red-100 text-red-700"
+                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                    : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                 }`}
               >
                 {product.inStock ? "In stock" : "Out of stock"}
@@ -165,25 +165,25 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                     d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.374 2.455a1 1 0 00-.364 1.118l1.287 3.957c.3.921-.755 1.688-1.54 1.118l-3.374-2.455a1 1 0 00-1.175 0l-3.374 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.98 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.957z"
                   />
                 </svg>
-                <span className="text-sm font-semibold text-neutral-900">
+                <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
                   {product.rating}
                 </span>
-                <span className="text-sm text-neutral-500">
+                <span className="text-sm text-neutral-500 dark:text-neutral-400">
                   | {product.reviewCount} Reviews
                 </span>
               </div>
             )}
 
             {product.description && (
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                {product.description}
-              </p>
+<p className="text-sm text-neutral-600 leading-relaxed dark:text-neutral-400">
+              {product.description}
+            </p>
             )}
 
             {/* price section */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               {product.discount && (
-                <span className="inline-flex bg-neutral-900 text-white text-xs font-bold px-2.5 py-1 rounded">
+                <span className="inline-flex bg-neutral-900 text-white text-xs font-bold px-2.5 py-1 rounded dark:bg-neutral-100 dark:text-neutral-900">
                   {product.discount}
                 </span>
               )}
@@ -199,10 +199,10 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
 
             {/* actions */}
             <div className="flex items-center gap-3 pt-2">
-              <button className="flex-1 rounded-full bg-neutral-900 px-6 py-3 text-sm font-bold text-white hover:bg-neutral-800 transition-colors">
+              <button className="flex-1 rounded-full bg-neutral-900 px-6 py-3 text-sm font-bold text-white hover:bg-neutral-800 transition-colors dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200">
                 ADD TO CART
               </button>
-              <button className="rounded-full border-2 border-neutral-300 p-3 text-neutral-900 hover:bg-neutral-50 transition-colors">
+              <button className="rounded-full border-2 border-neutral-300 p-3 text-neutral-900 hover:bg-neutral-50 transition-colors dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -226,7 +226,7 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                 <li className="flex items-start gap-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-neutral-600 shrink-0 mt-0.5"
+                    className="h-5 w-5 text-neutral-600 shrink-0 mt-0.5 dark:text-neutral-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -239,8 +239,8 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                     />
                   </svg>
                   <div className="flex flex-col">
-                    <span className="text-xs font-medium text-neutral-600">Shipping Information</span>
-                    <span className="text-sm text-neutral-700">{product.shipping}</span>
+                    <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">Shipping Information</span>
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">{product.shipping}</span>
                   </div>
                 </li>
               )}
@@ -248,7 +248,7 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                 <li className="flex items-start gap-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-neutral-600 shrink-0 mt-0.5"
+                    className="h-5 w-5 text-neutral-600 shrink-0 mt-0.5 dark:text-neutral-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -261,8 +261,8 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                     />
                   </svg>
                   <div className="flex flex-col">
-                    <span className="text-xs font-medium text-neutral-600">Warranty Information</span>
-                    <span className="text-sm text-neutral-700">{product.warranty}</span>
+                    <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">Warranty Information</span>
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">{product.warranty}</span>
                   </div>
                 </li>
               )}
@@ -270,7 +270,7 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                 <li className="flex items-start gap-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-neutral-600 shrink-0 mt-0.5"
+                    className="h-5 w-5 text-neutral-600 shrink-0 mt-0.5 dark:text-neutral-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -283,8 +283,8 @@ export const ProductModal: FC<ProductModalProps> = ({ product, onClose }) => {
                     />
                   </svg>
                   <div className="flex flex-col">
-                    <span className="text-xs font-medium text-neutral-600">Return Policy</span>
-                    <span className="text-sm text-neutral-700">{product.returnPolicy}</span>
+                    <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">Return Policy</span>
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">{product.returnPolicy}</span>
                   </div>
                 </li>
               )}
