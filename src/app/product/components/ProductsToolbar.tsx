@@ -2,6 +2,10 @@
 
 type ProductsToolbarProps = {
   total: number;
+  /** How many products (in current filter set) are in stock. */
+  inStockCount?: number;
+  /** Total products in current filter set before applying in-stock filter. */
+  totalBeforeStockFilter?: number;
   search?: string;
   onSearchChange?: (value: string) => void;
 
@@ -21,10 +25,16 @@ type ProductsToolbarProps = {
 
   inStock?: boolean;
   onInStockChange?: (value: boolean) => void;
+
+  /** When true, show the "Clear all filters" button. */
+  hasActiveFilters?: boolean;
+  onClearFilters?: () => void;
 };
 
 export function ProductsToolbar({
   total,
+  inStockCount,
+  totalBeforeStockFilter,
   search = "",
   onSearchChange,
   sort = "newest",
@@ -39,15 +49,37 @@ export function ProductsToolbar({
   onPriceChange,
   inStock = false,
   onInStockChange,
+  hasActiveFilters = false,
+  onClearFilters,
 }: ProductsToolbarProps) {
   const totalLabel = new Intl.NumberFormat("en-US").format(total);
+  const stockLabel =
+    inStockCount != null && totalBeforeStockFilter != null
+      ? inStock
+        ? `Showing only in-stock (${totalLabel} products)`
+        : `${new Intl.NumberFormat("en-US").format(inStockCount)} of ${new Intl.NumberFormat("en-US").format(totalBeforeStockFilter)} in stock`
+      : null;
 
   return (
     <section className="p-4">
-      {/* top row: count + search */}
+      {/* top row: count + clear filters + search */}
       <div className="flex flex-col gap-4">
-        <div className="flex items-center">
-          <span className="text-sm tracking-tight">{totalLabel} Products</span>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-col gap-1">
+            <span className="text-sm tracking-tight">{totalLabel} Products</span>
+            {stockLabel != null && (
+              <span className="text-xs text-neutral-500">{stockLabel}</span>
+            )}
+          </div>
+          {hasActiveFilters && onClearFilters && (
+            <button
+              type="button"
+              onClick={onClearFilters}
+              className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2"
+            >
+              Clear all filters
+            </button>
+          )}
         </div>
         <label className="relative w-full bg-white">
           <span className="sr-only">Search products</span>
@@ -146,27 +178,26 @@ export function ProductsToolbar({
           </select>
         </label>
 
-        {/* in stock toggle */}
-        <label className="flex items-center gap-2 col-span-1 sm:col-auto sm:ml-auto mt-2 sm:mt-0">
-          <span className="text-xs sm:text-sm text-neutral-600">In stock</span>
-          <div
-            className={`relative inline-block h-5 w-10 rounded-full transition-colors duration-200 ${
+        {/* in stock toggle - rightmost */}
+        <div className="flex items-center gap-2 col-span-2 sm:col-auto sm:ml-auto mt-2 sm:mt-0">
+          <span className="text-xs sm:text-sm text-neutral-600">In stock only</span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={inStock}
+            aria-label={inStock ? "Show only in-stock products" : "Show all products"}
+            onClick={() => onInStockChange?.(!inStock)}
+            className={`relative inline-block h-5 w-10 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2 ${
               inStock ? "bg-black" : "bg-neutral-200"
             }`}
           >
-            <input
-              type="checkbox"
-              checked={inStock}
-              onChange={(e) => onInStockChange?.(e.target.checked)}
-              className="peer sr-only"
-            />
             <span
               className={`absolute left-0 top-0 h-5 w-5 rounded-full bg-white shadow transform transition-transform duration-200 ${
                 inStock ? "translate-x-5" : "translate-x-0"
               }`}
             />
-          </div>
-        </label>
+          </button>
+        </div>
       </div>
     </section>
   );
