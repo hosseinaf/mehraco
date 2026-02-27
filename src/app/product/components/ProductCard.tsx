@@ -26,9 +26,9 @@ export const ProductCard: FC<ProductCardProps> = ({
   oldPrice,
 }) => {
   return (
-    <article className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-100">
+    <article className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-neutral-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
       <div className="flex flex-1 items-center justify-center">
-        <div className="aspect-3/5 w-full max-w-64 sm:max-w-35 rounded-2xl bg-neutral-100 overflow-hidden">
+        <div className="aspect-3/5 w-full max-w-64 sm:max-w-35 rounded-2xl bg-neutral-100 overflow-hidden transition-transform duration-300 hover:scale-105">
           {imageUrl ? (
             <img
               src={imageUrl}

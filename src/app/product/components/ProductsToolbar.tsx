@@ -43,13 +43,13 @@ export function ProductsToolbar({
   const totalLabel = new Intl.NumberFormat("en-US").format(total);
 
   return (
-    <section className=" p-4    ">
+    <section className="p-4">
       {/* top row: count + search */}
-      <div className="flex flex-col whitespace-nowrap gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4">
         <div className="flex items-center">
-          <span className="text-sm  tracking-tight">{totalLabel} Products</span>
+          <span className="text-sm tracking-tight">{totalLabel} Products</span>
         </div>
-        <label className="relative w-64 sm:w-full bg-white">
+        <label className="relative w-full bg-white">
           <span className="sr-only">Search products</span>
 
           {/* Search Icon */}
@@ -78,14 +78,15 @@ export function ProductsToolbar({
         </label>
       </div>
 
-      {/* second row: filters */}
-      <div className="mt-4 flex flex-wrap items-center gap-2">
+      {/* filters section - responsive grid */}
+      <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-2">
         {/* sort */}
-        <label className="flex items-center gap-2">
+        <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 col-span-2 sm:col-auto">
+          <span className="text-xs sm:text-sm text-neutral-600 hidden sm:inline">Sort by</span>
           <select
             value={sort}
             onChange={(e) => onSortChange?.(e.target.value)}
-            className="h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
           >
             <option value="newest">Newest</option>
             <option value="price-asc">Price: Low to high</option>
@@ -94,12 +95,12 @@ export function ProductsToolbar({
         </label>
 
         {/* category */}
-        <label className="flex items-center gap-2">
-          <span className="text-sm text-neutral-600">Category</span>
+        <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
+          <span className="text-xs sm:text-sm text-neutral-600">Category</span>
           <select
             value={category}
             onChange={(e) => onCategoryChange?.(e.target.value)}
-            className="h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
           >
             <option value="">All</option>
             {categories.map((c) => (
@@ -111,12 +112,12 @@ export function ProductsToolbar({
         </label>
 
         {/* brands */}
-        <label className="flex items-center gap-2">
-          <span className="text-sm text-neutral-600">Brands</span>
+        <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
+          <span className="text-xs sm:text-sm text-neutral-600">Brands</span>
           <select
             value={brand}
             onChange={(e) => onBrandChange?.(e.target.value)}
-            className="h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
           >
             <option value="">All</option>
             {brands.map((b) => (
@@ -128,12 +129,12 @@ export function ProductsToolbar({
         </label>
 
         {/* price */}
-        <label className="flex items-center gap-2">
-          <span className="text-sm text-neutral-600">Price</span>
+        <label className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
+          <span className="text-xs sm:text-sm text-neutral-600">Price</span>
           <select
             value={price}
             onChange={(e) => onPriceChange?.(e.target.value)}
-            className="h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
+            className="w-full sm:w-auto h-9 rounded-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 shadow-sm outline-none transition hover:bg-neutral-50 focus:border-neutral-300 focus:ring-4 focus:ring-neutral-200"
           >
             <option value="">Any</option>
             <option value="0-50">$0 - $50</option>
@@ -143,8 +144,8 @@ export function ProductsToolbar({
         </label>
 
         {/* in stock toggle */}
-        <label className="flex items-center gap-2 ml-auto">
-          <span className="text-sm text-neutral-600">In stock</span>
+        <label className="flex items-center gap-2 col-span-1 sm:col-auto sm:ml-auto mt-2 sm:mt-0">
+          <span className="text-xs sm:text-sm text-neutral-600">In stock</span>
           <div
             className={`relative inline-block h-5 w-10 rounded-full transition-colors duration-200 ${
               inStock ? "bg-black" : "bg-neutral-200"
